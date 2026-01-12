@@ -1,1 +1,19 @@
-<p>modulu2 works!</p>
+<body>
+    <h3>Navbar aukeratutakoa</h3>
+    <table>
+        <tr>
+            <th>Izena</th>
+            <th>Data</th>
+            <th>Herria</th>
+            <th>Zenbat</th>
+        </tr>
+        @for (fruta of frutas; track fruta; let idx = $index) {
+            <tr class="{{$even ? 'even':''}}">
+                <td>{{fruta}}</td>
+                <td>{{idx}}</td>
+                <td>{{fruta}} + {{idx}}</td>
+                <td>a</td>
+            </tr>
+        }
+    </table>
+</body>

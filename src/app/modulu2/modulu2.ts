@@ -9,4 +9,6 @@ import { RouterLink } from '@angular/router';
 })
 export class Modulu2 {
 
+  frutas = ['Manzana', 'Pera', 'Naranja', 'Banana', 'Kiwi'];
+  /*frutas2 = ['Kiwi', 'Manzana', 'Pera', 'Naranja', 'Banana'];*/
 }
