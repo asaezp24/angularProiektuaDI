@@ -1,19 +1,33 @@
-<body>
-    <h3>Navbar aukeratutakoa</h3>
-    <table>
+<div class="p-6">
+  @if (mota) {
+    <h3 class="text-xl mb-4 text-gray-800">
+      {{ mota }}
+    </h3>
+
+    <table class="w-full border text-black">
+      <thead>
         <tr>
-            <th>Izena</th>
-            <th>Data</th>
-            <th>Herria</th>
-            <th>Zenbat</th>
+          <th class="p-2 border">Izena</th>
+          <th class="p-2 border">Data</th>
+          <th class="p-2 border">Herria</th>
+          <th class="p-2 border">Zenbat</th>
         </tr>
-        @for (fruta of frutas; track fruta; let idx = $index) {
-            <tr class="{{$even ? 'even':''}}">
-                <td>{{fruta}}</td>
-                <td>{{idx}}</td>
-                <td>{{fruta}} + {{idx}}</td>
-                <td>a</td>
-            </tr>
+      </thead>
+
+      <tbody>
+        @for (fruta of frutas; let i = $index; track fruta) {
+          <tr class="odd:bg-gray-400">
+            <td class="p-2 border">{{ fruta }}</td>
+            <td class="p-2 border">{{ i }}</td>
+            <td class="p-2 border">{{ fruta }} {{ i }}</td>
+            <td class="p-2 border">a</td>
+          </tr>
         }
+      </tbody>
     </table>
-</body>
+  } @else {
+    <p class="text-xl mb-4 text-gray-800">
+      Aukeratu evento mota bat
+    </p>
+  }
+</div>

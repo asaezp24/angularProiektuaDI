@@ -1,5 +1,14 @@
-<router-outlet />
+<div class="min-h-screen bg-white"
+     [class.flex]="!isNavbar">
+     
+  <app-modulu1
+    (motaSelected)="selectedMota = $event"
+    (layoutChange)="isNavbar = $event">
+  </app-modulu1>
 
-<app-modulu1></app-modulu1>
+  <app-modulu2
+    class="flex-1"
+    [mota]="selectedMota">
+  </app-modulu2>
 
-<app-modulu2></app-modulu2>
+</div>

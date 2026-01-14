@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-modulu2',
-  imports: [RouterLink],
+  standalone: true,
   templateUrl: './modulu2.html',
-  styleUrl: './modulu2.css',
 })
 export class Modulu2 {
+  @Input() mota: string | null = null;
 
   frutas = ['Manzana', 'Pera', 'Naranja', 'Banana', 'Kiwi'];
-  /*frutas2 = ['Kiwi', 'Manzana', 'Pera', 'Naranja', 'Banana'];*/
 }

@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modulu1',
-  imports: [RouterLink],
+  standalone: true,
   templateUrl: './modulu1.html',
-  styleUrl: './modulu1.css',
 })
 export class Modulu1 {
+  isNavbar = true;
 
+  mota = ['Kontzertuak', 'Erakusketa', 'Dantza'];
+
+  @Output() motaSelected = new EventEmitter<string>();
+  @Output() layoutChange = new EventEmitter<boolean>();
+
+  selectMota(mota: string) {
+    this.motaSelected.emit(mota);
+  }
+
+  toggleLayout() {
+    this.isNavbar = !this.isNavbar;
+    this.layoutChange.emit(this.isNavbar);
+  }
 }
