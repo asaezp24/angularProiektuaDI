@@ -1,33 +1,35 @@
 <div class="p-6">
   @if (mota) {
-    <h3 class="text-xl mb-4 text-gray-800">
-      {{ mota }}
-    </h3>
+  <h3 class="text-xl mb-4 text-gray-800">
+    {{ mota.name }}
+  </h3>
 
-    <table class="w-full border text-black">
-      <thead>
-        <tr>
-          <th class="p-2 border">Izena</th>
-          <th class="p-2 border">Data</th>
-          <th class="p-2 border">Herria</th>
-          <th class="p-2 border">Zenbat</th>
-        </tr>
-      </thead>
+  <table class="w-full border text-black">
+    <thead>
+      <tr>
+        <th class="p-2 border">Izena</th>
+        <th class="p-2 border">Data</th>
+        <th class="p-2 border">Herria</th>
+        <th class="p-2 border">Zenbat</th>
+      </tr>
+    </thead>
 
-      <tbody>
-        @for (fruta of frutas; let i = $index; track fruta) {
+    <tbody>
+      @if (data()) {
+        @for (event of data().items; let idx = $index; track event.id) {
           <tr class="odd:bg-gray-400">
-            <td class="p-2 border">{{ fruta }}</td>
-            <td class="p-2 border">{{ i }}</td>
-            <td class="p-2 border">{{ fruta }} {{ i }}</td>
-            <td class="p-2 border">a</td>
+            <td class="p-2 border">{{ event.nameEu }}</td>
+            <td class="p-2 border">{{ event.startDate }}</td>
+            <td class="p-2 border">{{ event.municipalityEu }}</td>
+            <td class="p-2 border">{{ event.priceEu }}</td>
           </tr>
         }
-      </tbody>
-    </table>
+      }
+    </tbody>
+  </table>
   } @else {
-    <p class="text-xl mb-4 text-gray-800">
-      Aukeratu evento mota bat
-    </p>
+  <p class="text-xl mb-4 text-gray-800">
+    Aukeratu evento mota bat
+  </p>
   }
 </div>

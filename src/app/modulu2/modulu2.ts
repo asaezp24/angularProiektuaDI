@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal, OnChanges, SimpleChanges } from '@angular/core';
+import { inject } from '@angular/core';
+import { Api } from '../zerbitzua/api';
 
 @Component({
   selector: 'app-modulu2',
@@ -6,7 +8,17 @@ import { Component, Input } from '@angular/core';
   templateUrl: './modulu2.html',
 })
 export class Modulu2 {
-  @Input() mota: string | null = null;
+  @Input() mota: { id: number, name: string } | null = null;
 
-  frutas = ['Manzana', 'Pera', 'Naranja', 'Banana', 'Kiwi'];
+  clientea = inject(Api);
+  data: any = signal(null);
+  
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['mota'] && this.mota) {
+      this.clientea.get_event(this.mota.id).subscribe((response) => {
+        this.data.set(response);
+        console.log(this.data());
+      });
+    }
+  }
 }

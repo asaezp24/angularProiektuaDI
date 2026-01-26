@@ -1,9 +1,9 @@
 <div class="min-h-screen bg-white"
      [class.flex]="!isNavbar">
-     
+
   <app-modulu1
-    (motaSelected)="selectedMota = $event"
-    (layoutChange)="isNavbar = $event">
+    [isNavbar]="isNavbar"
+    (motaSelected)="selectedMota = $event">
   </app-modulu1>
 
   <app-modulu2

@@ -9,8 +9,6 @@ import { Modulu2 } from './modulu2/modulu2';
   templateUrl: './app.html',
 })
 export class App {
-  selectedMota: string | null = null;
-
+  selectedMota: { id: number, name: string } | null = null;
   isNavbar = true;
-  
 }

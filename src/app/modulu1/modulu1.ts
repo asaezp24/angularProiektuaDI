@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modulu1',
@@ -6,19 +6,18 @@ import { Component, EventEmitter, Output } from '@angular/core';
   templateUrl: './modulu1.html',
 })
 export class Modulu1 {
-  isNavbar = true;
 
-  mota = ['Kontzertuak', 'Erakusketa', 'Dantza'];
+  @Input() isNavbar = true;
 
-  @Output() motaSelected = new EventEmitter<string>();
-  @Output() layoutChange = new EventEmitter<boolean>();
+  @Output() motaSelected = new EventEmitter<{ id: number; name: string }>();
 
-  selectMota(mota: string) {
+  mota = [
+    { id: 1, name: 'Kontzertuak' },
+    { id: 3, name: 'Erakusketa' },
+    { id: 4, name: 'Dantza' },
+  ];
+
+  selectMota(mota: { id: number; name: string }) {
     this.motaSelected.emit(mota);
-  }
-
-  toggleLayout() {
-    this.isNavbar = !this.isNavbar;
-    this.layoutChange.emit(this.isNavbar);
   }
 }
